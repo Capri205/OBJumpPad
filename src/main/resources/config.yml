@@ -1,0 +1,6 @@
+power: 2.0
+vpower: 1.0
+plate: POLISHED_BLACKSTONE_PRESSURE_PLATE
+block: REDSTONE_BLOCK
+sound: BLOCK_LAVA_EXTINGUISH
+effect: CLOUD
