@@ -19,28 +19,29 @@ public class OBJumpPad extends JavaPlugin
 	
 	public static OBJumpPad instance;
 
-    private EventListener listener;
+	private EventListener listener;
 
-    private Double power;
-    private Double vpower;
-    private Material plate;
-    private Material block;
-    private Sound sound;
-    private Particle effect;
+	private Double power;
+	private Double vpower;
+	private Material plate;
+	private Material block;
+	private Sound sound;
+	private int numparticles;
+	private Particle effect;
 
 	private static String plugin = "OBJumpPad";
 	private static String pluginprefix = "[" + plugin + "]";
 	private static String chatmsgprefix = ChatColor.AQUA + "" + ChatColor.BOLD + plugin + ChatColor.DARK_GRAY + ChatColor.BOLD + " » " + ChatColor.LIGHT_PURPLE + "";
 	private static String logmsgprefix = pluginprefix + " » ";
 	
-    public OBJumpPad() {
-    	instance = this;
-    }
+	public OBJumpPad() {
+		instance = this;
+	}
 
-    /**
-     * Make our (public) main class methods and variables available to other classes
-     */
-    public static OBJumpPad getInstance() {
+	/**
+	 * Make our (public) main class methods and variables available to other classes
+	*/
+	public static OBJumpPad getInstance() {
     	return instance;
     }
 
@@ -83,6 +84,7 @@ public class OBJumpPad extends JavaPlugin
 		this.plate = Material.matchMaterial(config.getString("plate"));
 		this.block = Material.matchMaterial(config.getString("block"));
 		this.sound = Sound.valueOf(config.getString("sound"));
+		this.numparticles = config.getInt("particles");
 		this.effect = Particle.valueOf(config.getString("effect")); 
 	}
 
@@ -97,24 +99,27 @@ public class OBJumpPad extends JavaPlugin
     /**
      * Routine getters
      */
-    public Double getPower() {
-    	return this.power;
-    }
-    public Double getVPower() {
-    	return this.vpower;
-    }
-    public Material getPlate() {
-    	return this.plate;
-    }
-    public Material getBlock() {
-    	return this.block;
-    }
-    public Sound getSound() {
-    	return this.sound;
-    }
-    public Particle getEffect() {
-    	return this.effect;
-    }
+	public Double getPower() {
+		return this.power;
+	}
+	public Double getVPower() {
+		return this.vpower;
+	}
+	public Material getPlate() {
+		return this.plate;
+	}
+	public Material getBlock() {
+		return this.block;
+	}
+	public Sound getSound() {
+		return this.sound;
+	}
+	public int getParticleCount() {
+		return this.numparticles;
+	}
+	public Particle getEffect() {
+		return this.effect;
+	}
 	// consistent messaging
 	public static String getPluginName() {
 		return plugin;

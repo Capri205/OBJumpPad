@@ -5,7 +5,7 @@ Using a block and a pressure plate combination to launch a player.
 
 The configuration file contains these defaults, but set them per your liking:
 
-power: -2.0<br>
+power: 2.0<br>
 vpower: 1.0<br>
 plate: POLISHED_BLACKSTONE_PRESSURE_PLATE<br>
 block: REDSTONE_BLOCK<br
