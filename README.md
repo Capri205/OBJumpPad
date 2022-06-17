@@ -17,4 +17,4 @@ The plate is the Minecraft pressure plate of choice and under that will be the b
 Likewise for sound and particle effects. To get a list of all the blocks, sounds and particles<br>
 you should search up something like "spigot api sounds" etc.<br>
 
-Compiled with Java 17 for Spigot 1.18.
+Compiled for 1.19 with Java 17.
