@@ -4,19 +4,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.Particle;
+import org.bukkit.Registry;
 import org.bukkit.Sound;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import net.md_5.bungee.api.ChatColor;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 
-public class OBJumpPad extends JavaPlugin
-{
+public class OBJumpPad extends JavaPlugin {
+
 	static Logger log = Logger.getLogger("Minecraft");
-	
+
 	public static OBJumpPad instance;
 
 	private EventListener listener;
@@ -30,51 +35,29 @@ public class OBJumpPad extends JavaPlugin
 	private Particle effect;
 
 	private static String plugin = "OBJumpPad";
-	private static String pluginprefix = "[" + plugin + "]";
-	private static String chatmsgprefix = ChatColor.AQUA + "" + ChatColor.BOLD + plugin + ChatColor.DARK_GRAY + ChatColor.BOLD + " » " + ChatColor.LIGHT_PURPLE + "";
-	private static String logmsgprefix = pluginprefix + " » ";
+	private static String pluginPrefix = "[" + plugin + "]";
+    private static String logMsgPrefix = pluginPrefix + " » ";
+	private static TextComponent chatMsgPrefix = Component.text(plugin, NamedTextColor.AQUA, TextDecoration.BOLD)
+	    .append(Component.text(" » ", NamedTextColor.DARK_GRAY, TextDecoration.BOLD));
 	
 	public OBJumpPad() {
 		instance = this;
 	}
 
-	/**
-	 * Make our (public) main class methods and variables available to other classes
-	*/
 	public static OBJumpPad getInstance() {
     	return instance;
     }
 
-	/**
-	 * Plugin Start
-	 */
 	public void onEnable() {
-		/**
-		 * Initialize Stuff
-		 */
 		initializeStuff();
-
-		/**
-		 * Register stuff
-		 */
 		registerStuff();
-
-		log.log(Level.INFO, getLogMsgPrefix() + " Plugin Version " + this.getDescription().getVersion() + " activated!");
+		log.log(Level.INFO, logMsgPrefix + " Plugin Version " + this.getPluginMeta().getVersion() + " activated!");
 	}
 
-	/**
-	 * Plugin Stop
-	 */
 	public void onDisable() {
-		/**
-		 * Output message
-		 */
-		log.log(Level.INFO, getLogMsgPrefix() + " Plugin deactivated!");
+		log.log(Level.INFO, logMsgPrefix + " Plugin deactivated!");
 	}
 
-	/**
-	 * Initialize Stuff
-	 */
 	public void initializeStuff() {
 		this.saveDefaultConfig();
 		Configuration config = this.getConfig();
@@ -83,22 +66,16 @@ public class OBJumpPad extends JavaPlugin
 		this.vpower = config.getDouble("vpower");
 		this.plate = Material.matchMaterial(config.getString("plate"));
 		this.block = Material.matchMaterial(config.getString("block"));
-		this.sound = Sound.valueOf(config.getString("sound"));
+	    this.sound = Registry.SOUNDS.get(NamespacedKey.minecraft(config.getString("sound").toLowerCase()));
 		this.numparticles = config.getInt("particles");
 		this.effect = Particle.valueOf(config.getString("effect")); 
 	}
 
-	/**
-	 * Register things
-	 */
 	public void registerStuff() {
         this.listener = new EventListener();
         this.getServer().getPluginManager().registerEvents((Listener)this.listener, (Plugin)this);
 	}
 	
-    /**
-     * Routine getters
-     */
 	public Double getPower() {
 		return this.power;
 	}
@@ -125,13 +102,13 @@ public class OBJumpPad extends JavaPlugin
 		return plugin;
 	}
 	public static String getPluginPrefix() {
-		return pluginprefix;
+		return pluginPrefix;
 	}
-	public static String getChatMsgPrefix() {
-		return chatmsgprefix;
+	public static TextComponent getChatMsgPrefix() {
+		return chatMsgPrefix;
 	}
 	public static String getLogMsgPrefix() {
-		return logmsgprefix;
+		return logMsgPrefix;
 	}
 
 }
