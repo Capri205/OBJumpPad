@@ -39,7 +39,7 @@ public class EventListener implements Listener {
 		this.plate = Material.matchMaterial(plateName != null ? plateName : loader.DEFAULT_PLATE);
  		String blockName = loader.getConfig().getString("block");
 		this.block = Material.matchMaterial(blockName != null ? blockName : loader.DEFAULT_BLOCK);
-		String soundName = loader.getConfig().getString("block");
+		String soundName = loader.getConfig().getString("sound");
 		soundName = soundName != null ? soundName.toLowerCase() : loader.DEFAULT_SOUND;
 		this.sound = Registry.SOUNDS.get(NamespacedKey.minecraft(soundName));
 		this.numparticles = loader.getConfig().getInt("particles");
