@@ -1,0 +1,7 @@
+name: OBJumpPad
+version: '1.2'
+main: net.obmc.objumppad.OBJumpPad
+description: Simple Jump pad to launch a player when they step on it
+api-version: '1.21.5'
+bootstrapper: net.obmc.objumppad.OBJumpPadBootstrap
+loader: net.obmc.objumppad.OBJumpPadLoader

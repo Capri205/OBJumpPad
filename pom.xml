@@ -2,9 +2,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>net.obmc</groupId>
-  <artifactId>OBJumpPad</artifactId>
+  <artifactId>objumppad</artifactId>
   <name>OBJumpPad</name>
-  <version>1.1</version>
+  <version>1.2</version>
   <description>Simple Jump pad to launch a player when they step on it</description>
   <url>http://ob-mc.net</url>
   <packaging>jar</packaging>
@@ -17,18 +17,6 @@
   <build>
 
     <finalName>${project.name}-${project.version}</finalName>
-
-    <!-- ensure plugin.yml gets the tags updated -->
-    <resources>
-      <resource>
-        <targetPath>.</targetPath>
-        <filtering>true</filtering>
-        <directory>${basedir}/src/main/resources/</directory>
-        <includes>
-          <include>*.yml</include>
-        </includes>
-      </resource>
-    </resources>
 
     <plugins>
       <plugin>
@@ -59,6 +47,7 @@
       <groupId>io.papermc.paper</groupId>
       <artifactId>paper-api</artifactId>
       <version>1.21.4-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 

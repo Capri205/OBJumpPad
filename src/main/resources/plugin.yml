@@ -1,9 +1,0 @@
-name: ${project.name}
-description: ${project.description}
-author: Fahrenheit451|Capri205
-website: ${project.url}
-version: ${project.version}
-api-version: ${api-version}
-main: net.obmc.${project.name}.${project.name}
-depend: []
-commands:
